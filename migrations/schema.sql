@@ -46,19 +46,44 @@ CREATE TABLE public.schema_migration (
 ALTER TABLE public.schema_migration OWNER TO postgres;
 
 --
+-- Name: schools; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.schools (
+    id uuid NOT NULL,
+    name character varying(255) NOT NULL,
+    service character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.schools OWNER TO postgres;
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.users (
     id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
-    name character varying(255) NOT NULL,
-    age integer,
+    first_name_th character varying(255) NOT NULL,
+    last_name_th character varying(255) NOT NULL,
+    age integer NOT NULL,
+    graduated_id uuid NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
 ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- Name: schools schools_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.schools
+    ADD CONSTRAINT schools_pkey PRIMARY KEY (id);
+
 
 --
 -- Name: schema_migration_version_idx; Type: INDEX; Schema: public; Owner: postgres
