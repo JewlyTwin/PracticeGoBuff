@@ -20,6 +20,7 @@ func GetUser(c buffalo.Context) error {
     //     fname: fname
     //     lanme: lname
     // }
-    db.ValidateAndCreate(&u)
+    db.Create(&u)
+    // db.ValidateAndCreate(&u)
 	return c.Render(200, r.JSON(&u))
 }
