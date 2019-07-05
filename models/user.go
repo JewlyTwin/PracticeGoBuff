@@ -10,8 +10,11 @@ import (
 )
 
 type User struct {
-	ID   uuid.UUID `json:"id" db:"id"`
-	Name string    `json:"s" db:"name"`
+	ID              uuid.UUID   `json:"id" db:"id"`
+    Fname           string      `json:"first_name_th" db:"first_name_th"`
+    Lname           string      `json:"last_name_th" db:"last_name_th"`
+    age         	int    		`json:"age" db:"age"`
+	graduate_id 	uuid.UUID	`json:"graduate_id" db:"graduate_id"`
 	// Service		nulls.String
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
 	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`
