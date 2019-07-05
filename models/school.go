@@ -2,16 +2,20 @@ package models
 
 import (
 	"encoding/json"
+	"time"
+
+	"github.com/gobuffalo/nulls"
 	"github.com/gobuffalo/pop"
 	"github.com/gobuffalo/validate"
 	"github.com/gofrs/uuid"
-	"time"
 )
 
 type School struct {
-	ID        uuid.UUID `json:"id" db:"id"`
-	CreatedAt time.Time `json:"created_at" db:"created_at"`
-	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`
+	ID        uuid.UUID    `json:"id" db:"id"`
+	Name      string       `json:"name" db:"name"`
+	Service   nulls.String `json:"service" db:"service"`
+	CreatedAt time.Time    `json:"created_at" db:"created_at"`
+	UpdatedAt time.Time    `json:"updated_at" db:"updated_at"`
 }
 
 // String is not required by pop and may be deleted
