@@ -12,6 +12,8 @@ import (
 	contenttype "github.com/gobuffalo/mw-contenttype"
 	"github.com/gobuffalo/x/sessions"
 	"github.com/rs/cors"
+
+	"github.com/JewlyTwin/practice/actions/handlers"
 )
 
 // ENV is used to help switch settings based on where the
@@ -58,6 +60,8 @@ func App() *buffalo.App {
 		app.Use(popmw.Transaction(models.DB))
 
 		app.GET("/", HomeHandler)
+		app.POST("/school", handlers.PostSchool)
+		app.POST("/user", HomeHandler)
 	}
 
 	return app
