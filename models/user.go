@@ -2,7 +2,7 @@ package models
 
 import (
 	"encoding/json"
-	"github.com/gobuffalo/nulls"
+	// "github.com/gobuffalo/nulls"
 	"github.com/gobuffalo/pop"
 	"github.com/gobuffalo/validate"
 	"github.com/gofrs/uuid"
