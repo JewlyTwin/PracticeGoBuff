@@ -61,13 +61,10 @@ func App() *buffalo.App {
 
 		app.GET("/", HomeHandler)
 		app.POST("/school", handlers.PostSchool)
-<<<<<<< HEAD
 		// app.GET("/school/{id}/{name}", handlers.GetSchoolBySchool)
 		app.GET("/school", handlers.GetAllSchool)
 		app.POST("/user", HomeHandler)
-=======
 		app.GET("/user/{fname}/{lname}/{age}/{graduate_id}", handlers.GetUser)
->>>>>>> c29695c02a72af79a8cabc2c865dd1d78f871323
 	}
 
 	return app
