@@ -61,7 +61,7 @@ func App() *buffalo.App {
 
 		app.GET("/", HomeHandler)
 		app.POST("/school", handlers.PostSchool)
-		app.POST("/user", HomeHandler)
+		app.GET("/user/{fname}/{lname}/{age}/{graduate_id}", handlers.GetUser)
 	}
 
 	return app
