@@ -5,5 +5,7 @@ import (
 )
 
 func PostSchool(c buffalo.Context) error {
-	return c.Render(200, r.JSON(map[string]string{"message": "Welcome to Buffalo!"}))
+	c.Request().ParseForm()
+	param := c.Request().PostForm
+	return c.Render(200, r.JSON(param))
 }
