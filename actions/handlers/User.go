@@ -23,3 +23,7 @@ func GetUser(c buffalo.Context) error {
     // db.ValidateAndCreate(&u)
 	return c.Render(200, r.JSON(&u))
 }
+
+func GetUserById() {
+
+}
