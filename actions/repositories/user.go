@@ -15,8 +15,11 @@ func GetUser(fname string,lname string,ages string) models.User{
 	return u1
 } 
 
-func GetUserById(id uuid) models.User{
+func GetUserById(id uuid) boolean{
 	user := User{}
 	err := db.Find(&user , id)
-	return user
+	if err != nil {
+		return true
+	}
+		return false
 }
