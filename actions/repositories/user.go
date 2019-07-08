@@ -28,7 +28,6 @@ func CheckUserById(id uuid.UUID, c buffalo.Context) interface{} {
 	}
 	user := models.User{}
 	err := db.Find(&user, id)
-	log.Println(err)
 	if err != nil {
 		return false
 	}
