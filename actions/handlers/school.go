@@ -13,17 +13,16 @@ func PostSchool(c buffalo.Context) error {
 	return c.Render(200, r.JSON(school))
 }
 func GetAllSchool(c buffalo.Context) error {
-	// c.Request().ParseForm()
-	// param := c.Request().PostForm
-	// data := DynamicPostForm(param)
-	// school := repositories.PostSchool(data)
 	school := repositories.GetAllSchool(c)
 	return c.Render(200, r.JSON(school))
 }
-// func GetSchoolBySchool(c buffalo.Context) error {
-// 	// c.Request().ParseForm()
-// 	id := c.Param("id")
-// 	name := c.Param("name")
-// 	school := repositories.PostSchool(data)
-// 	return c.Render(200, r.JSON(school))
-// }
+func GetBySchool(c buffalo.Context) error {
+	// c.Request().ParseForm()
+	// id := c.Param("id")
+	// name := c.Param("name")
+	c.Request().ParseForm()
+	param := c.Request().PostForm
+	data := DynamicPostForm(param)
+	school := repositories.GetBySchool(data, c)
+	return c.Render(200, r.JSON(school))
+}
