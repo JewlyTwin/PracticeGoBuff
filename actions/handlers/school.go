@@ -42,15 +42,3 @@ func DeleteSchool(c buffalo.Context) error {
 	return c.Render(200, r.JSON(school))
 }
 
-func CheckSchoolById(id uuid.UUID, c buffalo.Context) interface{} {
-	db, ok := c.Value("tx").(*pop.Connection)
-	if !ok {
-		return map[string]interface{}{"error": "can't connect DB"}
-	}
-	school := models.School{}
-	err := db.Find(&school, id)
-	if err != nil {
-		return false
-	}
-	return true
-}

@@ -6,7 +6,6 @@ import (
 
 	"github.com/JewlyTwin/practice/models"
 	"github.com/gofrs/uuid"
-	"log"
 	"strconv"
 )
 

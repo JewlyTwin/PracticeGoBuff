@@ -2,7 +2,7 @@ create_table("club_in_schools") {
 	t.Column("id", "uuid", {"default_raw": "uuid_generate_v4()"})
 	t.Column("club_id", "uuid", {})
 	t.Column("school_id", "uuid", {})
-	t.Foreignkey("club_id", {"schools": ["id"]}, {})
+	t.Foreignkey("school_id", {"schools": ["id"]}, {})
 	t.Foreignkey("club_id", {"clubs": ["id"]}, {})
 	t.Timestamps()
 }

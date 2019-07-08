@@ -72,6 +72,8 @@ func App() *buffalo.App {
 		app.GET("/user/{name}/{newname}", handlers.UpdateUser)
 		//club
 		app.POST("/club", handlers.PostClub)
+		//clubinschool
+		app.POST("/clubinschool", handlers.PostClubInSchool)
 	}
 
 	return app

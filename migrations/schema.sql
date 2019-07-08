@@ -35,6 +35,21 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: club_in_schools; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.club_in_schools (
+    id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
+    club_id uuid NOT NULL,
+    school_id uuid NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.club_in_schools OWNER TO postgres;
+
+--
 -- Name: clubs; Type: TABLE; Schema: public; Owner: postgres
 --
 

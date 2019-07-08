@@ -7,24 +7,24 @@ import (
 	"github.com/JewlyTwin/practice/models"
 	"github.com/gofrs/uuid"
 	"log"
-	"strconv"
 )
 
 func InsertClubInSchool(x map[string]interface{}, c buffalo.Context) interface{} {
-	db, ok := c.Value("tx").(*pop.Connection)
-	if !ok {
-		return map[string]interface{}{"error": "can't connect DB"}
-	}
+	db := ConnectDB(c).(*pop.Connection)
 	school_id , _ := uuid.FromString(x["school_id"].(string))
 	club_id , _ := uuid.FromString(x["club_id"].(string))
-	errschool := CheckSchoolById()
-	errclub := CheckClubById()
-	if err != false {
-		if err2 != false {
-			clubinschool := models.ClubInSchool{school_id: x["school_id"].(string), club_id: x["club_id"], CreatedAt: time.Now()}
+	errschool := CheckSchoolById(school_id, c)
+	log.Print(errschool)
+	errclub := CheckClubById(club_id, c)
+	log.Print(errclub)
+	if errschool != false {
+		if errclub != false {
+			clubinschool := models.ClubInSchool{School_id: school_id, Club_id: club_id}
 			db.ValidateAndCreate(&clubinschool)
 			return &clubinschool
 		}
+	return map[string]interface{}{"error": "can't ๅ"}
+
 	}
 	return map[string]interface{}{"error": "can't create clubinschool"}
 
