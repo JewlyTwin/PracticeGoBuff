@@ -11,10 +11,10 @@ import (
 )
 
 type User struct {
-	ID              uuid.UUID   `json:"id" db:"id"`
-	Fname           string      `json:"first_name_th" db:"first_name_th"`
-	Lname           string      `json:"last_name_th" db:"last_name_th"`
-	Age         	int    		`json:"age" db:"age"`
+	ID    uuid.UUID `json:"id" db:"id"`
+	Fname string    `json:"first_name_th" db:"first_name_th"`
+	Lname string    `json:"last_name_th" db:"last_name_th"`
+	Age   int       `json:"age" db:"age"`
 	// Graduate_id 	uuid.UUID	`json:"graduate_id" db:"graduate_id" fk_id:"" `
 	// Service		nulls.String
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
