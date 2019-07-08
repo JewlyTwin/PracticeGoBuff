@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"github.com/gobuffalo/buffalo"
 	"github.com/JewlyTwin/practice/actions/repositories"
+	"github.com/gobuffalo/buffalo"
 )
 
 func PostSchool(c buffalo.Context) error {
