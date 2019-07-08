@@ -1,10 +1,13 @@
 package repositories
 
 import (
-	// "github.com/gobuffalo/buffalo"
+	"github.com/gobuffalo/buffalo"
+	"github.com/gobuffalo/pop"
+
 	"github.com/JewlyTwin/practice/models"
 	"strconv"
 	"github.com/gofrs/uuid"
+	"log"
 )
 
 func GetUser(fname string,lname string,ages string) models.User{
@@ -15,11 +18,16 @@ func GetUser(fname string,lname string,ages string) models.User{
 	return u1
 } 
 
-func GetUserById(id uuid) boolean{
-	user := User{}
-	err := db.Find(&user , id)
-	if err != nil {
-		return true
+func CheckUserById(id uuid.UUID, c buffalo.Context) interface{}{
+	db, ok := c.Value("tx").(*pop.Connection)
+	if !ok {
+		return map[string]interface{}{"error":"can't connect DB"}
 	}
+	user := models.User{}
+	err := db.Find(&user , id)
+	log.Println(err)
+	if err != nil {
 		return false
+	}
+		return true
 }

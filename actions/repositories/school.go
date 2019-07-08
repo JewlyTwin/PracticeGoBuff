@@ -10,15 +10,19 @@ import (
 		// "log"
 )
 func PostSchool(x map[string]interface{}, c buffalo.Context) interface{} {
-	userId, _ := uuid.FromString(x["userid"].(string))
-	newSchool := models.School{Name : x["name"].(string), CreatedAt : time.Now(), UserId : userId }
 	db, ok := c.Value("tx").(*pop.Connection)
 	if !ok {
 		return map[string]interface{}{"error":"can't connect DB"}
 	}
-
-	db.ValidateAndCreate(&newSchool)
-	return &newSchool
+	userId, _ := uuid.FromString(x["userid"].(string))
+	err := CheckUserById(userId, c)
+	if err!=false {
+		newSchool := models.School{Name : x["name"].(string), CreatedAt : time.Now(), UserId : userId }
+	
+		db.ValidateAndCreate(&newSchool)
+		return &newSchool
+	}
+	return map[string]interface{}{"error":"can't user"}
 }
 
 func GetAllSchool(c buffalo.Context) interface{} {
