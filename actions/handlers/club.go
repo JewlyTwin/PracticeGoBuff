@@ -9,7 +9,7 @@ func PostClub(c buffalo.Context) error {
 	c.Request().ParseForm()
 	param := c.Request().PostForm
 	data := DynamicPostForm(param)
-	club := repositories.PostSchool(data, c)
+	club := repositories.PostClub(data, c)
 	return c.Render(200, r.JSON(club))
 }
 // func GetAllSchool(c buffalo.Context) error {
