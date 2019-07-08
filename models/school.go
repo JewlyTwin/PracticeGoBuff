@@ -8,6 +8,7 @@ import (
 	"github.com/gobuffalo/pop"
 	"github.com/gobuffalo/validate"
 	"github.com/gofrs/uuid"
+	"github.com/JewlyTwin/practice/modelers"
 )
 
 type School struct {
@@ -15,6 +16,7 @@ type School struct {
 	Name      string       `json:"name" db:"name"`
 	Service   nulls.String `json:"service" db:"service"`
 	UserId    uuid.UUID    `json:"user_id" db:"user_id" fk_id:"id"`
+	Clubs     []models.Club
 	CreatedAt time.Time    `json:"created_at" db:"created_at"`
 	UpdatedAt time.Time    `json:"updated_at" db:"updated_at"`
 }
