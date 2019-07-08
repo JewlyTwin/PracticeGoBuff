@@ -53,6 +53,7 @@ CREATE TABLE public.schools (
     id uuid NOT NULL,
     name character varying(255) NOT NULL,
     service character varying(255),
+    user_id uuid NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -69,7 +70,6 @@ CREATE TABLE public.users (
     first_name_th character varying(255) NOT NULL,
     last_name_th character varying(255) NOT NULL,
     age integer NOT NULL,
-    graduated_id uuid NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

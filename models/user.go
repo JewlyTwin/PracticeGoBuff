@@ -15,7 +15,7 @@ type User struct {
 	Fname           string      `json:"first_name_th" db:"first_name_th"`
 	Lname           string      `json:"last_name_th" db:"last_name_th"`
 	Age         	int    		`json:"age" db:"age"`
-	Graduate_id 	uuid.UUID	`json:"graduate_id" db:"graduate_id"`
+	// Graduate_id 	uuid.UUID	`json:"graduate_id" db:"graduate_id" fk_id:"" `
 	// Service		nulls.String
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
 	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`

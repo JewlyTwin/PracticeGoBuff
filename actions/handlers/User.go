@@ -14,8 +14,7 @@ func GetUser(c buffalo.Context) error {
     fname := c.Param("fname")
     lname := c.Param("lname")
     age := c.Param("age")
-    graduate_id := c.Param("graduate_id")
-    u := repositories.GetUser(fname, lname, age, graduate_id)
+    u := repositories.GetUser(fname, lname, age)
     // user := models.User{
     //     fname: fname
     //     lanme: lname
