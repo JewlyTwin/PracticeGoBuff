@@ -3,7 +3,5 @@ create_table("users") {
 	t.Column("first_name_th", "string", {})
 	t.Column("last_name_th", "string", {})
 	t.Column("age", "integer", {})
-	t.Column("graduated_id", "uuid", {})
-	t.Foreignkey("graduated_id", {"schools": ["id"]}, {})
 	t.Timestamps()
 }
