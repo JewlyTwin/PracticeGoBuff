@@ -27,3 +27,10 @@ func CheckClubById(id uuid.UUID, c buffalo.Context) interface{} {
 	}
 	return true
 }
+
+func GetPaginate(c *Connection) {
+
+	q := c.Paginate(3, 15)
+	q.All(&[]models.Club)
+	q.Paginator
+}
