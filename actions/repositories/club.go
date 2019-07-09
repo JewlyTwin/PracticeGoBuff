@@ -7,10 +7,15 @@ import (
 	"github.com/JewlyTwin/practice/models"
 	"github.com/gofrs/uuid"
 	"time"
-	"log"
+	// "log"
 	"strconv"
 )
 
+type Page struct {
+	NumberPage int
+	Clubs  []models.Club
+	TotalPage int
+}
 func PostClub(x map[string]interface{}, c buffalo.Context) interface{} {
 	db := ConnectDB(c).(*pop.Connection)
 		newClub := models.Club{Name: x["name"].(string), CreatedAt: time.Now()}
@@ -35,18 +40,6 @@ func GetPaginate(page string, c buffalo.Context) interface{} {
 	q := b.Paginate(numberPage, 15)
 	clubb := []models.Club{} 
 	q.All(&clubb)
-
-	// log.Print(q.Paginator.total_pages)
-	return &clubb
+	clubJson := Page{numberPage, clubb, q.Paginator.TotalPages}
+	return &clubJson
 }
-// func GetTotalPaginate(c buffalo.Context) interface{} {
-// 	b := ConnectDB(c).(*pop.Connection)
-// 	// numberPage, _ := 	strconv.Atoi(page)
-// 	q := b.Paginate(1, 15)
-// 	clubb := []models.Club{} 
-// 	q.All(&clubb)
-
-// 	log.Print(q.Paginator)
-// 	// log.Print("Saddddddddddd")
-// 	return &q.Paginator
-// }

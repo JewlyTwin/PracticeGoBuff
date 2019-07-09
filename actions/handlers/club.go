@@ -19,33 +19,3 @@ func GetPaginate(c buffalo.Context) error {
 	club := repositories.GetPaginate(page,c)
 	return c.Render(200, r.JSON(club))
 }
-func GetTotalPaginate(c buffalo.Context) error {
-	// page := c.Param("page")
-	totalPage := repositories.GetTotalPaginate(c)
-	return c.Render(200, r.JSON(totalPage))
-}
-// func GetAllSchool(c buffalo.Context) error {
-// 	school := repositories.GetAllSchool(c)
-// 	return c.Render(200, r.JSON(school))
-// }
-// func GetBySchool(c buffalo.Context) error {
-// 	c.Request().ParseForm()
-// 	param := c.Request().PostForm
-// 	data := DynamicPostForm(param)
-// 	school := repositories.GetBySchool(data, c)
-// 	return c.Render(200, r.JSON(school))
-// }
-// func UpdateSchool(c buffalo.Context) error {
-// 	c.Request().ParseForm()
-// 	param := c.Request().PostForm
-// 	data := DynamicPostForm(param)
-// 	school := repositories.UpdateSchool(data, c)
-// 	return c.Render(200, r.JSON(school))
-// }
-// func DeleteSchool(c buffalo.Context) error {
-// 	c.Request().ParseForm()
-// 	param := c.Request().PostForm
-// 	data := DynamicPostForm(param)
-// 	school := repositories.DeleteSchool(data, c)
-// 	return c.Render(200, r.JSON(school))
-// }
