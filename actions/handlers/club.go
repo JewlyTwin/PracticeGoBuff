@@ -12,6 +12,12 @@ func PostClub(c buffalo.Context) error {
 	club := repositories.PostClub(data, c)
 	return c.Render(200, r.JSON(club))
 }
+
+func GetPaginate(c buffalo.Context) error {
+	repositories.GetPaginate(c)
+
+	return nil
+}
 // func GetAllSchool(c buffalo.Context) error {
 // 	school := repositories.GetAllSchool(c)
 // 	return c.Render(200, r.JSON(school))

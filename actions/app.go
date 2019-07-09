@@ -76,6 +76,9 @@ func App() *buffalo.App {
 		app.POST("/clubinschool", handlers.PostClubInSchool)
 
 		app.GET("/clubinschool", handlers.GetClubInSchool)
+
+		//pagination
+		app.GET("/page", hnadlers.GetPaginate)
 	}
 
 	return app
