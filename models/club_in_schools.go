@@ -10,8 +10,9 @@ import (
 
 type ClubInSchool struct {
 	ID        uuid.UUID `json:"id" db:"id"`
-	Club_id   uuid.UUID `json:"Club_id" db:"Club_id" fk_id:"id"`	
-	School_id uuid.UUID `json:"School_id" db:"School_id" fk_id:"id"`
+	Club_id   uuid.UUID `json:"Club_id" db:"club_id" fk_id:"id"`	
+	School_id uuid.UUID `json:"School_id" db:"school_id" fk_id:"id"`
+	// Club 	  Club      `json:"club" has_one:"clubs"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
 	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`
 }

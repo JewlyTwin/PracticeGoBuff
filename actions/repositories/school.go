@@ -7,7 +7,8 @@ import (
 	"github.com/JewlyTwin/practice/models"
 	"github.com/gofrs/uuid"
 	"time"
-	// "log"
+	"reflect"
+	"log"
 )
 
 func PostSchool(x map[string]interface{}, c buffalo.Context) interface{} {
@@ -33,6 +34,8 @@ func GetAllSchool(c buffalo.Context) interface{} {
 	}
 	schools := []models.School{}
 	db.All(&schools)
+	log.Print(schools)
+	log.Print(reflect.TypeOf(schools))
 	return &schools
 }
 

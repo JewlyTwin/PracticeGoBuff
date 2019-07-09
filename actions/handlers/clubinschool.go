@@ -15,3 +15,8 @@ func PostClubInSchool(c buffalo.Context) error {
 
 	return c.Render(200, r.JSON(club))
 }
+
+func GetClubInSchool(c buffalo.Context) error {
+	club := repositories.GetClubInSchool(c)
+	return c.Render(200, r.JSON(club))
+}
