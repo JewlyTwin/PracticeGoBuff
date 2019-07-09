@@ -3,6 +3,7 @@ package handlers
 import (
 	"github.com/JewlyTwin/practice/actions/repositories"
 	"github.com/gobuffalo/buffalo"
+
 )
 
 func PostClub(c buffalo.Context) error {
@@ -14,9 +15,14 @@ func PostClub(c buffalo.Context) error {
 }
 
 func GetPaginate(c buffalo.Context) error {
-	repositories.GetPaginate(c)
-
-	return nil
+	page := c.Param("page")
+	club := repositories.GetPaginate(page,c)
+	return c.Render(200, r.JSON(club))
+}
+func GetTotalPaginate(c buffalo.Context) error {
+	// page := c.Param("page")
+	totalPage := repositories.GetTotalPaginate(c)
+	return c.Render(200, r.JSON(totalPage))
 }
 // func GetAllSchool(c buffalo.Context) error {
 // 	school := repositories.GetAllSchool(c)

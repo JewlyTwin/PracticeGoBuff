@@ -78,7 +78,8 @@ func App() *buffalo.App {
 		app.GET("/clubinschool", handlers.GetClubInSchool)
 
 		//pagination
-		app.GET("/page", handlers.GetPaginate)
+		app.GET("/page/{page}", handlers.GetPaginate)
+		app.GET("/pages/total", handlers.GetTotalPaginate)
 	}
 
 	return app

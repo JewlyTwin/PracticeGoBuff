@@ -8,6 +8,7 @@ import (
 	"github.com/gofrs/uuid"
 	"time"
 	"log"
+	"strconv"
 )
 
 func PostClub(x map[string]interface{}, c buffalo.Context) interface{} {
@@ -28,13 +29,24 @@ func CheckClubById(id uuid.UUID, c buffalo.Context) interface{} {
 	return true
 }
 
-func GetPaginate(c buffalo.Context) {
+func GetPaginate(page string, c buffalo.Context) interface{} {
 	b := ConnectDB(c).(*pop.Connection)
-	q := b.Paginate(3, 15)
+	numberPage, _ := 	strconv.Atoi(page)
+	q := b.Paginate(numberPage, 15)
 	clubb := []models.Club{} 
 	q.All(&clubb)
-	// q.Paginator
-	log.Print(q.Paginator)
-	log.Print(clubb)
 
+	// log.Print(q.Paginator.total_pages)
+	return &clubb
 }
+// func GetTotalPaginate(c buffalo.Context) interface{} {
+// 	b := ConnectDB(c).(*pop.Connection)
+// 	// numberPage, _ := 	strconv.Atoi(page)
+// 	q := b.Paginate(1, 15)
+// 	clubb := []models.Club{} 
+// 	q.All(&clubb)
+
+// 	log.Print(q.Paginator)
+// 	// log.Print("Saddddddddddd")
+// 	return &q.Paginator
+// }
