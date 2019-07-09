@@ -7,7 +7,7 @@ import (
 	"github.com/JewlyTwin/practice/models"
 	"github.com/gofrs/uuid"
 	"time"
-	// "log"
+	"log"
 )
 
 func PostClub(x map[string]interface{}, c buffalo.Context) interface{} {
@@ -28,9 +28,13 @@ func CheckClubById(id uuid.UUID, c buffalo.Context) interface{} {
 	return true
 }
 
-func GetPaginate(c *Connection) {
+func GetPaginate(c buffalo.Context) {
+	b := ConnectDB(c).(*pop.Connection)
+	q := b.Paginate(3, 15)
+	clubb := []models.Club{} 
+	q.All(&clubb)
+	// q.Paginator
+	log.Print(q.Paginator)
+	log.Print(clubb)
 
-	q := c.Paginate(3, 15)
-	q.All(&[]models.Club)
-	q.Paginator
 }
